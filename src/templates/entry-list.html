@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ SITE_NAME }}
+{% endblock %}
+
+{% block content %}
+    <!-- Blog posts -->
+    {% for entry in entries %}
+        <article class="entry" itemscope itemtype="http://schema.org/BlogPosting">
+            <header>
+                <h1 itemprop="headline" class="entry-title">
+                    <a href="{{ entry.url }}">{{ entry.title }}</a>
+                </h1>
+            </header>
+            <div class="entry-meta-top">
+                <time itemprop="datePublished" datetime="{{ entry.date }}">{{ entry.date|date }}</time>
+                <div class="entry-share">
+                    <span>Share:</span>
+                    <ul>
+                        <li>
+                            <a class="share-button"
+                               href="https://www.facebook.com/sharer/sharer.php?u={{ SITE_URL }}{{ entry.url }}"
+                               target="_blank">Facebook</a>
+                        </li>
+                        <li>
+                            <a class="share-button" href="https://twitter.com/share?url={{ SITE_URL }}{{ entry.url }}"
+                               target="_blank">Twitter</a>
+                        </li>
+                        <li>
+                            <a class="share-button"
+                               href="https://www.linkedin.com/sharing/share-offsite/?url={{ SITE_URL }}{{ entry.url }}"
+                               target="_blank">LinkedIn</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="entry-content" itemprop="accessibilitySummary">
+                {{ entry.description }}
+            </div>
+            <div class="entry-meta-bottom">
+                {% if entry.tags %}
+                    <div class="entry-tags">
+                        <span>Topics:</span>
+                        <ul class="entry-tags-list">
+                            {% for tag in entry.tags %}
+                                <li><a href="{{ tag.url }}">#{{ tag.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                {% if WIDGETPACK_ID %}
+                    <a class="entry-comment-url {{ entry.slug }}" href="{{ SITE_URL }}{{ entry.url }}#wpac-comment">
+                        Loading comments&hellip;
+                    </a>
+                {% endif %}
+            </div>
+        </article>
+    {% endfor %}
+
+    {% if paginator and paginator.page_count > 1 %}
+        <!-- Pagination -->
+        <ul class="site-pagination">
+            {% if paginator.prev_page %}
+                <li>
+                    <a href="{{ page_name }}{% if paginator.prev_page > 1 %}{{ paginator.prev_page }}{% endif %}.html">
+                        Previous page
+                    </a> |
+                </li>
+            {% endif %}
+            <li>
+                Page {{ paginator.page_num }} of {{ paginator.page_count }}
+            </li>
+            {% if paginator.next_page %}
+                <li>
+                    | <a href="{{ page_name }}{{ paginator.next_page }}.html">Next page</a>
+                </li>
+            {% endif %}
+        </ul>
+    {% endif %}
+{% endblock %}
+{% block extra %}
+    {% if WIDGETPACK_ID %}
+        <script type="text/javascript">
+            wpac_init = window.wpac_init || [];
+            wpac_init.push({widget: 'CommentCount', id: {{ WIDGETPACK_ID }}});
+            (function () {
+                if ('WIDGETPACK_LOADED' in window) return;
+                WIDGETPACK_LOADED = true;
+                var mc = document.createElement('script');
+                mc.type = 'text/javascript';
+                mc.async = true;
+                mc.src = 'https://embed.widgetpack.com/widget.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(mc, s.nextSibling);
+            })();
+        </script>
+    {% endif %}
+{% endblock %}

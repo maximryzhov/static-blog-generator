@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ SITE_NAME }} - #{{ tag.name }}
+{% endblock %}
+
+{% block content %}
+    <header>
+        <h1 class="entry-title">Browse all entries by topic: {{ tag.name }}</h1>
+    </header>
+    <nav>
+        <ul>
+            {% for entry in tag.entries %}
+                <li><a href="{{ entry.url }}">{{ entry.title }}</a> ({{ entry.date|date }})</li>
+            {% endfor %}
+        </ul>
+    </nav>
+    <div class="page-meta-bottom">
+        <a href="/">Back to main</a> | <a href="#">To the top</a>
+    </div>
+{% endblock %}

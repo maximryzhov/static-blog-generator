@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ SITE_NAME }} - {{ entry.title }}
+{% endblock %}
+
+{% block content %}
+    <article class="entry" itemscope itemtype="http://schema.org/BlogPosting">
+        <header>
+            <h1 itemprop="headline" class="entry-title">
+                <a href="{{ entry.url }}">{{ entry.title }}</a>
+            </h1>
+        </header>
+        <div class="entry-meta-top">
+            <time itemprop="datePublished" datetime="{{ entry.date }}">{{ entry.date|date }}</time>
+            <div class="entry-share">
+                <span>Share:</span>
+                <ul>
+                    <li>
+                        <a class="share-button"
+                           href="https://www.facebook.com/sharer/sharer.php?u={{ SITE_URL }}{{ entry.url }}"
+                           target="_blank">Facebook</a>
+                    </li>
+                    <li>
+                        <a class="share-button" href="https://twitter.com/share?url={{ SITE_URL }}{{ entry.url }}"
+                           target="_blank">Twitter</a>
+                    </li>
+                    <li>
+                        <a class="share-button"
+                           href="https://www.linkedin.com/sharing/share-offsite/?url={{ SITE_URL }}{{ entry.url }}"
+                           target="_blank">LinkedIn</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="entry-content" itemprop="articleBody">
+            {{ entry.html }}
+        </div>
+        <div class="entry-meta-bottom">
+            {% if entry.tags %}
+                <div class="entry-tags">
+                    <span>Topics:</span>
+                    <ul class="entry-tags-list">
+                        {% for tag in entry.tags %}
+                            <li><a href="{{ tag.url }}">#{{ tag.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <a href="/">Back to main</a> | <a href="#">To the top</a>
+        </div>
+    </article>
+    <section id="pageComments">
+        <hr>
+        <h1>
+            Comments
+        </h1>
+        {% if WIDGETPACK_ID %}
+            <div id="wpac-comment"></div>
+            <script type="text/javascript">
+                wpac_init = window.wpac_init || [];
+                wpac_init.push({widget: 'Comment', id: {{ WIDGETPACK_ID }}});
+                (function () {
+                    if ('WIDGETPACK_LOADED' in window) return;
+                    WIDGETPACK_LOADED = true;
+                    var mc = document.createElement('script');
+                    mc.type = 'text/javascript';
+                    mc.async = true;
+                    mc.src = 'https://embed.widgetpack.com/widget.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(mc, s.nextSibling);
+                })();
+            </script>
+        {% else %}
+            <p>Comments are disabled</p>
+        {% endif %}
+    </section>
+{% endblock %}
+{% block extra %}
+    <div class="sticky-social-buttons-wrapper">
+        <div class="sticky-social-buttons" id="stickySocialButtons">
+            <span>Share</span>
+            <ul>
+                <li>
+                    <a class="share-button"
+                       href="https://www.facebook.com/sharer/sharer.php?u={{ SITE_URL }}{{ entry.url }}"
+                       target="_blank">Facebook</a>
+                </li>
+                <li>
+                    <a class="share-button" href="https://twitter.com/share?url={{ SITE_URL }}{{ entry.url }}"
+                       target="_blank">Twitter</a>
+                </li>
+                <li>
+                    <a class="share-button"
+                       href="https://www.linkedin.com/sharing/share-offsite/?url={{ SITE_URL }}{{ entry.url }}"
+                       target="_blank">LinkedIn</a>
+                </li>
+            </ul>
+            <a href="/" class="back-url">Back to main</a>
+        </div>
+    </div>
+    <script>
+        window.onscroll = function () {
+            toggleSticky()
+        };
+
+        function toggleSticky() {
+            var stickyShare = document.getElementById('stickySocialButtons');
+            var normalShare = document.getElementsByClassName("entry-share")[0];
+            var offsetTop = normalShare.getBoundingClientRect().top;
+
+            if (offsetTop + normalShare.offsetHeight <= 0) {
+                stickyShare.style.visibility = 'visible';
+                stickyShare.style.opacity = '1';
+            }
+            else {
+                stickyShare.style.opacity = '0';
+                stickyShare.style.visibility = 'hidden';
+            }
+        }
+
+        toggleSticky();
+    </script>
+{% endblock %}

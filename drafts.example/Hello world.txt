@@ -1,0 +1,32 @@
+title: Hello, world!
+date: 22-09-2019
+tags: hello
+    world
+    test
+description: This is my first post.
+
+Hello, world! This is my first post.
+
+You can use all the [Markdown](https://en.wikipedia.org/wiki/Markdown) features.
+
+----
+# Header
+## Header 2
+### Header 3
+
+*emphasis*
+**strong**
+`monospaced`
+
+* unordered
+* list
+
+Higlighted code (requires [Pygments](http://pygments.org/))
+
+    :::python
+    # Comment
+    a = 1 + 2
+    print("Hello, world!")
+
+
+Regsiter a [WidgetPack](https://widgetpack.com) account and set your `WIDGETPACK_ID` in `settings.py` to add comments.

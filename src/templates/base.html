@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="{{ SITE_LANGUAGE }}" itemscope itemtype="http://schema.org/WebPage">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <meta name="description" content="{{ SITE_DESCRIPTION }}">
+    <meta name="keywords" content="{{ SITE_KEYWORDS }}">
+
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/codehilite.css">
+
+    {% if GOOGLE_ANALYTICS_ID %}
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ GOOGLE_ANALYTICS_ID }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+            gtag('config', '{{ GOOGLE_ANALYTICS_ID }}');
+        </script>
+    {% endif %}
+
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <div class="site-title">
+            <a href="/" class="site-title-text" title="Main page">
+                {{ SITE_NAME }}
+            </a>
+        </div>
+        <div class="site-description">{{ SITE_DESCRIPTION }}</div>
+        <div class="site-search">
+            <form action="/search.html">
+                <input type="text" name="query" id="searchBox" placeholder="Search site">
+                <input type="submit" value=">>">
+            </form>
+        </div>
+        <div class="site-browse">
+            <a href="/tags/">Browse all topics</a>
+        </div>
+    </header>
+    <main class="content">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="footer">
+        Last updated: {{ last_updated|date }} | <a href="/feed.xml">RSS</a> | <a href="mailto:{{ ADMIN_EMAIL }}">Contact
+        me</a> | Built with <a target="_blank" href="https://github.com/rasmaxim/static-blog-generator">static blog generator</a>
+    </footer>
+</div>
+{% block extra %}
+{% endblock %}
+<script>
+    // window centering script by http://www.xtf.dk/2011/08/center-new-popup-window-even-on.html
+    function PopupCenter(url, title, w, h) {
+        // Fixes dual-screen position                         Most browsers      Firefox
+        let dualScreenLeft = window.screenLeft !== undefined ? window.screenLeft : screen.left;
+        let dualScreenTop = window.screenTop !== undefined ? window.screenTop : screen.top;
+
+        width = window.innerWidth ? window.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+        height = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+        let left = ((width / 2) - (w / 2)) + dualScreenLeft;
+        let top = ((height / 2) - (h / 2)) + dualScreenTop;
+        let newWindow = window.open(url, title, 'scrollbars=yes, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+
+        // Puts focus on the newWindow
+        if (window.focus) {
+            newWindow.focus();
+        }
+    }
+
+    let buttons = document.getElementsByClassName("share-button");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = function (e) {
+            let href = e.target.getAttribute("href");
+            PopupCenter(href, 'xtf', '600', '600');
+            return false
+        }
+    }
+</script>
+</body>
+</html>

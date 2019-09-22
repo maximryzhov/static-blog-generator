@@ -1,0 +1,38 @@
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# General settings
+SITE_NAME = "My blog"
+SITE_URL = "http://example.com"
+SITE_DESCRIPTION = "Blog about everything"
+SITE_LANGUAGE = "en-us"
+SITE_KEYWORDS = "things, more things, even more things"
+ADMIN_EMAIL = "admin@example.com"
+ENTRIES_PER_PAGE = 10
+
+# Directory settings
+TEMPLATES_DIR = os.path.join(BASE_DIR, "templates")
+DRAFTS_DIR = os.path.join(BASE_DIR, "..", "drafts.example")
+PUBLIC_DIR = os.path.join(BASE_DIR, "..", "public")
+INDEX_DIR = PUBLIC_DIR
+ENTRIES_DIR = os.path.join(PUBLIC_DIR, 'entries')
+TAGS_DIR = os.path.join(PUBLIC_DIR, 'tags')
+
+# URL settings
+ENTRIES_LOCATION = "/entries"
+TAGS_LOCATION = "/tags"
+
+# Drafts settings
+DRAFTS_EXTENSIONS = ["txt", "md"]
+DRAFTS_DATE_FORMAT = "%d-%m-%Y"
+PUBLISHED_DATE_FORMAT = "%B %d, %Y"
+
+# Sitemap generation
+SITEMAP_CHANGEFREQ = "never"
+SITEMAP_PRIORITY = "0.5"
+
+# Third party services settings
+# (set to None if you don't use them)
+GOOGLE_ANALYTICS_ID = None
+WIDGETPACK_ID = None

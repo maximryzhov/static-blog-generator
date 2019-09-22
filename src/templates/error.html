@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ SITE_NAME }} - Error {{ code }}
+{% endblock %}
+
+{% block content %}
+    <header>
+        <h1 class="entry-title">{{ message }}</h1>
+    </header>
+    <div class="page-meta">
+        <p>
+            You can <a href="/">go back</a> or <a href="mailto:{{ ADMIN_EMAIL }}">conact the administrator</a>.
+        </p>
+    </div>
+{% endblock %}

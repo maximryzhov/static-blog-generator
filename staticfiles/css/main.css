@@ -1,0 +1,389 @@
+body {
+    font-family: "Segoe UI";
+    background-color: white;
+    color: #222;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+h1 {
+    line-height: 1.2em;
+}
+
+a {
+    color: darkcyan;
+}
+
+a:hover {
+    color: firebrick;
+    text-decoration: none;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+}
+
+.container {
+    width: 100%;
+    min-height: 100%;
+    position: relative;
+    margin: 0px auto;
+    overflow-x: hidden;
+}
+
+.header {
+    height: auto;
+    background-color: darkcyan;
+    padding-bottom: 20px;
+}
+
+.site-title {
+
+}
+
+.site-title-text {
+    font-size: 3em;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.site-title-text:hover {
+    color: white;
+}
+
+.site-description {
+    display: none;
+    height: 70px;
+    color: gray;
+}
+
+.site-search {
+    font-size: 18px;
+    height: 50px
+}
+
+.site-browse a {
+    color: white;
+}
+
+.content {
+    padding-bottom: 150px; /* Height of the footer */
+}
+
+.entry {
+    /*margin: 0px 0 60px 0;*/
+}
+
+.entry-title {
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 0;
+}
+
+.entry-title a {
+    text-decoration: none;
+    color: #222;
+}
+
+.entry-title a:hover {
+    text-decoration: none;
+    color: darkcyan;
+}
+
+.entry-meta-top {
+}
+
+.entry-meta-top time {
+    display: block;
+    float: none;
+    color: grey;
+    border-bottom: 1px dotted grey;
+    padding-top: 10px;
+}
+
+.entry-share {
+    display: block;
+    float: none;
+    padding-top: 10px;
+    color: lightgrey;
+}
+
+.entry-share > span {
+    color: lightgrey;
+    font-weight: bold;
+}
+
+.entry-share ul {
+    display: inline;
+    list-style: none;
+    padding: 0;
+}
+
+.entry-share ul li {
+    display: inline;
+}
+
+.entry-share a {
+    color: lightgrey;
+    border-bottom: 1px solid lightgrey;
+    text-decoration: none;
+}
+
+.entry-share a:hover {
+    color: #222;
+    border-bottom: 1px solid #222;
+}
+
+.entry-tags {
+    padding-bottom: 20px;
+}
+
+.entry-tags span {
+    font-weight: bold;
+    color: grey;
+}
+
+.entry-tags-list {
+    display: inline;
+    list-style-type: none;
+    padding: 0;
+}
+
+.entry-tags-list li {
+    display: inline;
+}
+
+.entry-content {
+    clear: both;
+    padding-top: 10px;
+}
+
+.entry-meta-bottom {
+    margin-top: 20px;
+}
+
+.entry-comment-url {
+
+}
+
+.site-pagination {
+    list-style-type: none;
+    padding: 36px 0 0;
+}
+
+.site-pagination li {
+    display: inline;
+}
+
+.page-meta-bottom {
+
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px; /* Height of the footer */
+    padding: 40px 0 10px 0;
+    color: lightgray;
+    border-top: 1px solid lightgray;
+}
+
+.footer a {
+    color: lightgray;
+}
+
+.sticky-social-buttons-wrapper {
+    margin: 0 auto;
+}
+
+.sticky-social-buttons {
+    display: block;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 10px 0;
+    visibility: hidden;
+    color: lightgrey;
+    background: darkcyan;
+    opacity: 0;
+    transition: visibility 0.1s, opacity 0.1s linear;
+}
+
+.sticky-social-buttons > span {
+    float: left;
+    font-weight: bold;
+    color: lightgrey;
+}
+
+.sticky-social-buttons ul {
+    display: inline;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+
+.sticky-social-buttons ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+.sticky-social-buttons ul li a {
+    color: lightgrey;
+}
+
+.sticky-social-buttons ul li a:hover {
+    color: #222;
+}
+
+.sticky-social-buttons a.back-url {
+    color: white;
+    float: right;
+    margin-right: 10px;
+}
+
+.header, .content, .footer {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.codehilite {
+    overflow-x: auto;
+    padding-left: 20px;
+}
+
+/* ==========================================================================
+   Media queries for responsive design.
+   ========================================================================== */
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width: 480px) {
+    .entry-share {
+        display: inline;
+        float: right;
+        padding-top: 0;
+    }
+
+    .entry-meta-top time {
+        display: inline;
+        padding-top: 0;
+    }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+    h1 {
+        line-height: inherit;
+    }
+
+    .header {
+        background-color: inherit;
+        min-height: 320px;
+        padding-bottom: 0;
+    }
+
+    .site-title-text {
+        color: darkcyan;
+    }
+
+    .site-title-text:hover {
+        color: darkcyan;
+    }
+
+    .site-description {
+        display: block;
+    }
+
+    .container {
+        width: 700px;
+    }
+
+    .sticky-social-buttons {
+        top: 20px;
+        left: 40px;
+        width: auto;
+        display: block;
+        background: none;
+    }
+
+    .sticky-social-buttons > span {
+        display: block;
+        float: none;
+        margin-bottom: 20px;
+    }
+
+    .sticky-social-buttons ul {
+        display: block;
+        float: none;
+        margin-bottom: 20px;
+    }
+
+    .sticky-social-buttons ul li {
+        display: block;
+        line-height: 2em;
+        margin-left: 0;
+    }
+
+    .sticky-social-buttons a.back-url {
+        color: darkcyan;
+        float: none;
+    }
+
+    .site-title {
+        padding-top: 30px;
+    }
+
+    .site-browse a {
+        color: darkcyan;
+    }
+
+    .site-browse a:hover {
+        color: firebrick;
+        text-decoration: none;
+    }
+
+    .header, .content, .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+    .container {
+        width: 740px;
+    }
+
+}
+
+/* Full HD screens */
+@media only screen and (min-width: 1920px) {
+    .container {
+        width: 960px;
+    }
+
+    .sticky-social-buttons {
+        top: 150px;
+        width: auto;
+        display: block;
+    }
+
+}

@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ SITE_NAME }} - Search results
+{% endblock %}
+
+{% block content %}
+    <header>
+        <h1 class="entry-title">Search results</h1>
+    </header>
+    <div class="page-meta" id="searchResults">
+    </div>
+    <div class="page-meta-bottom">
+        <a href="/">Back to main</a> | <a href="#">To the top</a>
+    </div>
+{% endblock %}
+
+{% block extra %}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.5/fuse.min.js"></script>
+    <script type="text/javascript">
+
+        function loadJSON(callback) {
+            var xobj = new XMLHttpRequest();
+            xobj.overrideMimeType("application/json");
+            xobj.open('GET', 'search.json', true);
+            xobj.onreadystatechange = function () {
+                if (xobj.readyState == 4 && xobj.status == "200") {
+                    callback(xobj.responseText);
+                }
+            };
+            xobj.send(null);
+        }
+
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        var options = {
+            shouldSort: true,
+            tokenize: true,
+            threshold: 0.1,
+            location: 0,
+            distance: 100,
+            maxPatternLength: 32,
+            minMatchCharLength: 3,
+            findAllMatches: true,
+            keys: [
+                "title",
+                "content"
+            ]
+        };
+
+        loadJSON(function (list) {
+            list = JSON.parse(list);
+            var fuse = new Fuse(list, options);
+            var query = getParameterByName("query") || "";
+            var searchBox = document.getElementById("searchBox");
+            searchBox.value = query;
+            var result = fuse.search(query);
+            var div = document.getElementById("searchResults");
+            while (div.firstChild) {
+                div.removeChild(div.firstChild);
+            }
+            var resultHtml = document.createElement("ul");
+            result.forEach(function (item) {
+                var li = document.createElement("li");
+                var a = document.createElement("a");
+                a.href = item.url;
+                a.innerText = item.title;
+                li.appendChild(a);
+                li.innerHTML += " (" + item.date + ")";
+                resultHtml.appendChild(li);
+            });
+            if (result.length) {
+                div.appendChild(resultHtml);
+            }
+            else {
+                var p = document.createElement("p");
+                if (query) {
+                    p.innerText = "Nothing found for \"" + query + "\"."
+                }
+                else {
+                    p.innerText = "You have to type something in the search box."
+                }
+                div.appendChild(p);
+            }
+        })
+
+    </script>
+{% endblock %}

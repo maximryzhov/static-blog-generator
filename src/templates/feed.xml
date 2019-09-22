@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+	<channel>
+		<title>{{ SITE_NAME }}</title>
+		<link>{{ SITE_URL }}/</link>
+		<description>{{ SITE_DESCRIPTION }}</description>
+		<language>{{ SITE_LANGUAGE }}</language>
+		<lastBuildDate>{{ last_updated|rfc822 }}</lastBuildDate>
+		{% for entry in entries %}
+		<item>
+			<title>{{ entry.title }}</title>
+			<link>{{ SITE_URL }}{{ entry.url }}</link>
+			<guid>{{ SITE_URL }}{{ entry.url }}</guid>
+			<pubDate>{{ entry.date|rfc822 }}</pubDate>
+			<description>
+				{{ entry.description }}
+			</description>
+		</item>
+		{% endfor %}
+	</channel>
+</rss>
