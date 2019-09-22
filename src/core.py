@@ -112,14 +112,15 @@ def process_drafts(drafts):
                 "url": entry["url"],
                 "date": entry["date"]
             }
-            entries_with_tag[entry_tag["name"]].append(entry_ref)
-            if not entry_tag["name"] in tag_occurrences:
+
+            entries_with_tag[entry_tag["slug"]].append(entry_ref)
+            if not entry_tag["slug"] in tag_occurrences:
                 tags.append(entry_tag)
-                tag_occurrences.append(entry_tag["name"])
+                tag_occurrences.append(entry_tag["slug"])
 
     for tag in tags:
-        tag["count"] = tag_occurrences.count(tag["name"])
-        tag["entries"] = entries_with_tag[tag["name"]]
+        tag["count"] = tag_occurrences.count(tag["slug"])
+        tag["entries"] = entries_with_tag[tag["slug"]]
     entries = sorted(entries, key=lambda e: e['date'], reverse=True)
 
     return entries, tags
