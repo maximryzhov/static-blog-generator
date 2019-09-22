@@ -116,7 +116,7 @@ def process_drafts(drafts):
             entries_with_tag[entry_tag["slug"]].append(entry_ref)
             if not entry_tag["slug"] in tag_occurrences:
                 tags.append(entry_tag)
-                tag_occurrences.append(entry_tag["slug"])
+            tag_occurrences.append(entry_tag["slug"])
 
     for tag in tags:
         tag["count"] = tag_occurrences.count(tag["slug"])
