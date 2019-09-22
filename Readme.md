@@ -1,4 +1,4 @@
-#static-blog-generator
+# static-blog-generator
 
 Yet another [static site generator](https://www.google.com/search?q=static+site+generator). 
 I created it to power my own site, <http://rmgi.blog>. Later, I decided to release it to the public.
@@ -6,7 +6,7 @@ I created it to power my own site, <http://rmgi.blog>. Later, I decided to relea
 With this blog software, you can create blog entries, add tags to an entry or browse entries by tag, add comments to an entry,
  and search entries by keyword.
 
-##Features
+## Features
 * Minimalistic design
 * Just about 400 lines of code 
 * Automatically generates sitemap and RSS feed
@@ -18,7 +18,7 @@ With this blog software, you can create blog entries, add tags to an entry or br
 * Social network share buttons
 * Google Analytics integration (optional)
 
-##Downsides
+## Downsides
 Though it is a fully functional software, it has it flaws.
 
 * Every time you run the script, it rebuilds all the existing entries. 
@@ -32,7 +32,7 @@ This also affects sitemap's "lastmod" attribute and may make search engines angr
 
 I hope to fix all of the above in the future.
 
-##Usage
+## Usage
 1. Clone or download the repository.
 2. Install requirements `pip install -r requirements.txt`.
 3. Run `python src/blog.py copysettings` or manually copy `src/settings.py.example` to `src/settings.py`.
@@ -47,12 +47,12 @@ Every time your write a new post, repeat steps 6 to 8.
 
 If you want to have code highlighting, install Pygments `pip install pygments`
 
-##Credits
+## Credits
 * HTML based on [HTML5 boilerplate](https://github.com/h5bp/html5-boilerplate) by H5BP
 * Uses [window-centering script](http://www.xtf.dk/2011/08/center-new-popup-window-even-on.html) by xThomasFrost
 * Uses [XML Sitemap Stylesheet](https://github.com/pedroborges/xml-sitemap-stylesheet) by pedroborg.es
 
 If you think my code infringes your copyright, please contact me.
 
-##License
+## License
 Do whatever you want with the code, but it would be nice if you link back to this repo.
