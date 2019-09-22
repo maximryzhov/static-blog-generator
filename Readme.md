@@ -26,6 +26,7 @@ In case you have hundreds of entries, the build process may be slow, or even run
 * Even if you haven't modified your drafts, the last modified date is changed every time the site is assembled. 
 This also affects sitemap's "lastmod" attribute and may make search engines angry.
 * Unused html files are not deleted, you have to do it by hand. This is done to prevent destructive behaviour.
+* You can't have two (or more) entries with the same name. All of them will be overwritten by the next one without warnings.
 * Though code is simple, it is not extendable.
 * No automatic deployment/upload.
 * No tests.
