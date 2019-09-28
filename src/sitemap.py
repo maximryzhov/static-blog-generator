@@ -3,7 +3,7 @@ import time
 
 import xml.sax.saxutils
 
-from src.settings import SITE_URL, SITEMAP_CHANGEFREQ, SITEMAP_PRIORITY, INDEX_DIR
+from settings import SITE_URL, SITEMAP_CHANGEFREQ, SITEMAP_PRIORITY, INDEX_DIR
 
 
 def build_sitemap_url(path, lastmod=None, changefreq=SITEMAP_CHANGEFREQ, priority=SITEMAP_PRIORITY):

@@ -2,7 +2,7 @@ import email.utils
 
 from datetime import datetime
 
-from src.settings import PUBLISHED_DATE_FORMAT
+from settings import PUBLISHED_DATE_FORMAT
 
 
 def date_filter(value):

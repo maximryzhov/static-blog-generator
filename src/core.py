@@ -8,11 +8,11 @@ import markdown
 from markdown.extensions.codehilite import CodeHiliteExtension
 from jinja2 import FileSystemLoader, Environment
 
-from src.settings import *
-from src.utils import slugify, remove_tags
-from src.template_filters import date_filter, rfc822_filter
-from src.sitemap import build_sitemap_url
-from src.paginator import Paginator
+from settings import *
+from utils import slugify, remove_tags
+from template_filters import date_filter, rfc822_filter
+from sitemap import build_sitemap_url
+from paginator import Paginator
 
 
 def get_env():

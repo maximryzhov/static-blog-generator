@@ -19,7 +19,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.command == "build":
-        from src.core import build_all
+        from core import build_all
 
         print("Building pages..")
         start = time.time()
@@ -38,7 +38,7 @@ if __name__ == "__main__":
         print(f"Copied settings file to {base_dir}")
 
     elif args.command == 'copystatic':
-        from src.settings import BASE_DIR, PUBLIC_DIR
+        from settings import BASE_DIR, PUBLIC_DIR
 
         if os.path.exists(PUBLIC_DIR):
             choose_or_exit(f"Folder '{PUBLIC_DIR}' already exists.\nDo you wish to overwrite it?")
