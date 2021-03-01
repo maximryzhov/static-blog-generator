@@ -34,8 +34,7 @@ def get_env():
         "SITE_LANGUAGE": SITE_LANGUAGE,
         'ADMIN_EMAIL': ADMIN_EMAIL,
         'GOOGLE_ANALYTICS_ID': GOOGLE_ANALYTICS_ID,
-        'WIDGETPACK_ID': WIDGETPACK_ID,
-        'last_updated': datetime.now()
+        'WIDGETPACK_ID': WIDGETPACK_ID
     })
     return env
 
@@ -155,7 +154,7 @@ def build_entry_list_pages(env, entries):
         if p.page_num > 1:
             filename = f"index{p.page_num}.html"
         path = join(INDEX_DIR, filename)
-        urls.append(build_sitemap_url(path))
+        urls.append(build_sitemap_url(path, lastmod=env.globals['last_updated']))
         write(path, entry_list_html)
     return urls
 
@@ -168,7 +167,7 @@ def build_tag_detail_pages(env, tags):
     for tag in tags:
         tag_detail_html = tag_detail_tpl.render(tag=tag)
         path = join(TAGS_DIR, f"{tag['slug']}.html")
-        urls.append(build_sitemap_url(path))
+        urls.append(build_sitemap_url(path, lastmod=env.globals['last_updated']))
         write(path, tag_detail_html)
     return urls
 
@@ -178,7 +177,7 @@ def build_tag_list_pages(env, tags):
     tag_list_tpl = env.get_template("tag-list.html")
     tag_list_html = tag_list_tpl.render(tags=tags)
     path = join(TAGS_DIR, "index.html")
-    urls.append(build_sitemap_url(path))
+    urls.append(build_sitemap_url(path, lastmod=env.globals['last_updated']))
     write(path, tag_list_html)
     return urls
 
@@ -253,7 +252,9 @@ def build_all():
     drafts = load_drafts()
     entries, tags = process_drafts(drafts)
 
+    last_updated = entries[0]['date'] if entries else datetime.today()
     env = get_env()
+    env.globals['last_updated'] = last_updated
 
     sitemap_urls += build_entry_detail_pages(env, entries)
     sitemap_urls += build_entry_list_pages(env, entries)
