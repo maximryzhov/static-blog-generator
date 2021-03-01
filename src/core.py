@@ -140,7 +140,7 @@ def build_entry_detail_pages(env, entries):
     for entry in entries:
         entry_html = entry_detail_tpl.render(entry=entry)
         path = join(ENTRIES_DIR, f"{entry['slug']}.html")
-        urls.append(build_sitemap_url(path))
+        urls.append(build_sitemap_url(path, lastmod=entry['date']))
         write(path, entry_html)
     return urls
 
