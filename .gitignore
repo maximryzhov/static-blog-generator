@@ -4,3 +4,4 @@ __pycache__
 /public
 /drafts
 src/settings.py
+/.env
