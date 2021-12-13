@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/main.css">
+    {% if CSS_THEME %}<link rel="stylesheet" href="/css/{{ CSS_THEME }}.css">{% endif %}
     <link rel="stylesheet" href="/css/codehilite.css">
 
     {% if GOOGLE_ANALYTICS_ID %}

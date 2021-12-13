@@ -36,3 +36,6 @@ SITEMAP_PRIORITY = "0.5"
 # (set to None if you don't use them)
 GOOGLE_ANALYTICS_ID = None
 WIDGETPACK_ID = None
+
+# User theme to override standard main.css
+CSS_THEME = None
