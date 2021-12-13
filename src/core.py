@@ -65,7 +65,7 @@ def process_markdown(draft):
     """
     Processes draft contents and returns a dictionary with entry data and a list of dictionaries with tag data
     """
-    md = markdown.Markdown(extensions=['meta', CodeHiliteExtension()])
+    md = markdown.Markdown(extensions=['meta', CodeHiliteExtension(), 'fenced_code'])
     html = md.convert(draft)
     title = md.Meta.get("title")[0]
     slug = slugify(title)
