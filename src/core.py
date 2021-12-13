@@ -89,7 +89,7 @@ def process_markdown(draft):
         date=datetime.strptime(md.Meta.get("date")[0], DRAFTS_DATE_FORMAT),
         tags=tags
     )
-    return entry, tags
+    return entry
 
 
 def process_drafts(drafts):
@@ -103,9 +103,9 @@ def process_drafts(drafts):
     entries_with_tag = defaultdict(list)
 
     for draft in drafts:
-        entry, entry_tags = process_markdown(draft)
+        entry = process_markdown(draft)
         entries.append(entry)
-        for entry_tag in entry_tags:
+        for entry_tag in entry.get('tags'):
             entry_ref = {
                 "title": entry["title"],
                 "url": entry["url"],
