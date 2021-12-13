@@ -65,7 +65,7 @@ def process_markdown(draft):
     """
     Processes draft contents and returns a dictionary with entry data and a list of dictionaries with tag data
     """
-    md = markdown.Markdown(extensions=['meta', CodeHiliteExtension(), 'fenced_code'])
+    md = markdown.Markdown(extensions=['meta', CodeHiliteExtension(), 'fenced_code', 'attr_list'])
     html = md.convert(draft)
     title = md.Meta.get("title")[0]
     hidden = md.Meta.get("hidden", ["false"])[0]
