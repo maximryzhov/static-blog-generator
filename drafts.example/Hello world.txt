@@ -1,4 +1,5 @@
 title: Hello, world!
+hidden: false
 date: 22-09-2019
 tags: hello
     world
@@ -6,6 +7,8 @@ tags: hello
 description: This is my first post.
 
 Hello, world! This is my first post.
+
+Set `hidden` meta field to `true` to hide this post.
 
 You can use all the [Markdown](https://en.wikipedia.org/wiki/Markdown) features.
 

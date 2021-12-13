@@ -68,6 +68,17 @@ def process_markdown(draft):
     md = markdown.Markdown(extensions=['meta', CodeHiliteExtension(), 'fenced_code'])
     html = md.convert(draft)
     title = md.Meta.get("title")[0]
+    hidden = md.Meta.get("hidden", ["false"])[0]
+    
+    if hidden.lower() == 'true':
+        print(f"Skipping hidden post '{title}'")
+        return None  
+    elif hidden.lower() == 'false':
+        pass
+    else:
+        raise Exception("'hidden' should be 'true' or 'false', not '{published}' ({title})")
+    
+    title = md.Meta.get("title")[0]
     slug = slugify(title)
 
     tags = []
@@ -104,6 +115,9 @@ def process_drafts(drafts):
 
     for draft in drafts:
         entry = process_markdown(draft)
+        if entry is None:
+            continue
+
         entries.append(entry)
         for entry_tag in entry.get('tags'):
             entry_ref = {
