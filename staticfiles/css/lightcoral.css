@@ -1,0 +1,77 @@
+a {
+    color: lightcoral;
+}
+
+a:hover {
+    color: forestgreen;
+}
+
+blockquote {
+    border-left: 4px solid lightcoral;
+}
+
+p code {
+    color: forestgreen;
+}
+
+.entry-title a:hover {
+    color: lightcoral;
+}
+
+.sticky-social-buttons {
+    color: lightcoral;
+}
+
+/* ==========================================================================
+   Media queries for responsive design.
+   ========================================================================== */
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 320px) {
+    .header {
+        background-color: lightcoral;
+    }
+
+    .sticky-social-buttons {
+        color: lightgrey;
+        background: lightcoral;
+    }
+
+    .site-browse a:hover {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+    .header {
+        background-color: inherit;
+    }
+
+    .site-title-text {
+        color: lightcoral;
+    }
+
+    .site-title-text:hover {
+        color: lightcoral;
+    }
+
+    .sticky-social-buttons {
+        background: inherit;
+    }
+
+    .sticky-social-buttons a.back-url {
+        color: lightcoral;
+    }
+
+    .site-browse a {
+        color: lightcoral;
+    }
+
+    .site-browse a:hover {
+        color: forestgreen;
+        text-decoration: none;
+    }
+
+}

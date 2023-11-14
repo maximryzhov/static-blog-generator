@@ -1,0 +1,77 @@
+a {
+    color: #9365b8;
+}
+
+a:hover {
+    color: #6c9a47;
+}
+
+blockquote {
+    border-left: 4px solid #9365b8;
+}
+
+p code {
+    color: #6c9a47;
+}
+
+.entry-title a:hover {
+    color: #9365b8;
+}
+
+.sticky-social-buttons {
+    color: #9365b8;
+}
+
+/* ==========================================================================
+   Media queries for responsive design.
+   ========================================================================== */
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 320px) {
+    .header {
+        background-color: #9365b8;
+    }
+
+    .sticky-social-buttons {
+        color: lightgrey;
+        background: #9365b8;
+    }
+
+    .site-browse a:hover {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+    .header {
+        background-color: inherit;
+    }
+
+    .site-title-text {
+        color: #9365b8;
+    }
+
+    .site-title-text:hover {
+        color: #9365b8;
+    }
+
+    .sticky-social-buttons {
+        background: inherit;
+    }
+
+    .sticky-social-buttons a.back-url {
+        color: #9365b8;
+    }
+
+    .site-browse a {
+        color: #9365b8;
+    }
+
+    .site-browse a:hover {
+        color: #6c9a47;
+        text-decoration: none;
+    }
+
+}
