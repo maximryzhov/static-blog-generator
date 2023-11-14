@@ -35,7 +35,7 @@ SITEMAP_PRIORITY = "0.5"
 # Third party services settings
 # (set to None if you don't use them)
 GOOGLE_ANALYTICS_ID = None
-WIDGETPACK_ID = None
+GRAPHCOMMENT_ID = None
 
 # User theme to override standard main.css
 CSS_THEME = None

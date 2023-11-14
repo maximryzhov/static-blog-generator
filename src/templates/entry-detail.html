@@ -52,24 +52,25 @@
     </article>
     <section id="pageComments">
         <hr>
-        <h1>
-            Comments
-        </h1>
-        {% if WIDGETPACK_ID %}
-            <div id="wpac-comment"></div>
+        {% if GRAPHCOMMENT_ID %}
+            <div id="graphcomment"></div>
             <script type="text/javascript">
-                wpac_init = window.wpac_init || [];
-                wpac_init.push({widget: 'Comment', id: {{ WIDGETPACK_ID }}});
-                (function () {
-                    if ('WIDGETPACK_LOADED' in window) return;
-                    WIDGETPACK_LOADED = true;
-                    var mc = document.createElement('script');
-                    mc.type = 'text/javascript';
-                    mc.async = true;
-                    mc.src = 'https://embed.widgetpack.com/widget.js';
-                    var s = document.getElementsByTagName('script')[0];
-                    s.parentNode.insertBefore(mc, s.nextSibling);
-                })();
+            /* - - - CONFIGURATION VARIABLES - - - */
+            var __semio__params = {
+                graphcommentId: "{{ GRAPHCOMMENT_ID }}", // make sure the id is yours
+                behaviour: {
+                    uid: "{{ entry.url }}"
+                }
+            }
+            /* - - - DON'T EDIT BELOW THIS LINE - - - */
+            function __semio__onload() {
+                __semio__gc_graphlogin(__semio__params)
+            }
+            (function() {
+                var gc = document.createElement('script'); gc.type = 'text/javascript'; gc.async = true;
+                gc.onload = __semio__onload; gc.defer = true; gc.src = 'https://integration.graphcomment.com/gc_graphlogin.js?' + Date.now();
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(gc);
+            })();
             </script>
         {% else %}
             <p>Comments are disabled</p>

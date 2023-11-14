@@ -34,7 +34,7 @@ def get_env():
         "SITE_LANGUAGE": SITE_LANGUAGE,
         'ADMIN_EMAIL': ADMIN_EMAIL,
         'GOOGLE_ANALYTICS_ID': GOOGLE_ANALYTICS_ID,
-        'WIDGETPACK_ID': WIDGETPACK_ID,
+        'GRAPHCOMMENT_ID': GRAPHCOMMENT_ID,
         'CSS_THEME': CSS_THEME
     })
     return env
